@@ -32,6 +32,18 @@ export async function loadHeaderFooter() {
 	document.querySelector("footer").innerHTML = footerTemplate;
 
 	populateFooter();
+	tagActivePage();
+}
+
+function tagActivePage() {
+	const path = window.location.pathname;
+	const navLinks = document.querySelectorAll("nav a");
+
+	navLinks.forEach(link => {
+		if (link.getAttribute("href") === path) {
+			link.classList.add("active");
+		}
+	});
 }
 
 async function populateFooter() {
@@ -127,4 +139,27 @@ export function encodeGeohash(lat, lon, precision) {
 		}
 	}
 	return geohash;
+}
+
+export function renderStars(parentElement) {
+	const starList = getLocalStorage("starredList") || [];
+	for (const card of parentElement.children) {
+		const event_id = card.getAttribute("data-event-id");
+		if (starList.indexOf(event_id) > -1) {
+			const starEle = card.querySelector(".star");
+			starEle.classList.add("starred");
+		}
+	}	
+
+}
+
+export function toggleStar(id) {
+	const starredList = getLocalStorage("starredList") || [];
+
+	if (starredList.indexOf(id) >= 0) {
+		setLocalStorage("starredList", starredList.filter(eventId => eventId != id));
+	} else {
+		starredList.push(id);
+		setLocalStorage("starredList", starredList);
+	}
 }
