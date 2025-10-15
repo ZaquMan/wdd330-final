@@ -128,3 +128,26 @@ export function encodeGeohash(lat, lon, precision) {
 	}
 	return geohash;
 }
+
+export function renderStars(parentElement) {
+	const starList = getLocalStorage("starredList") || [];
+	for (const card of parentElement.children) {
+		const event_id = card.getAttribute("data-event-id");
+		if (starList.indexOf(event_id) > -1) {
+			const starEle = card.querySelector(".star");
+			starEle.classList.add("starred");
+		}
+	}	
+
+}
+
+export function toggleStar(id) {
+	const starredList = getLocalStorage("starredList") || [];
+
+	if (starredList.indexOf(id) >= 0) {
+		setLocalStorage("starredList", starredList.filter(eventId => eventId != id));
+	} else {
+		starredList.push(id);
+		setLocalStorage("starredList", starredList);
+	}
+}

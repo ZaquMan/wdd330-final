@@ -1,4 +1,4 @@
-import { loadHeaderFooter, getLocation, encodeGeohash } from "./utils.mjs";
+import { loadHeaderFooter, getLocation, encodeGeohash, renderStars, toggleStar } from "./utils.mjs";
 import { getEvents } from "./ExternalData";
 
 loadHeaderFooter();
@@ -67,7 +67,7 @@ function eventTemplate(event) {
   star.textContent = "★";
   star.addEventListener("click", () => {
     star.classList.toggle("starred");
-    //TODO: Add to localStorage Star list
+    toggleStar(event.id);
   });
   cardEle.appendChild(star);
 
@@ -87,16 +87,6 @@ function eventTemplate(event) {
   cardEle.appendChild(timeEle);
 
   return cardEle;
-
-  // return `
-  // <div class="event-card" data-category=${category}-${genre}>
-  // <img src=${imgSrc} loading="lazy">
-  // <p class="event-name">${event.name}</p>
-  //   <p class="star">★</p>
-  //   <p class="categories">Category: ${category} - ${genre}</p>
-  //   <p class="venue">${event._embedded.venues[0].name} - ${event._embedded.venues[0].city.name}</p>
-  //   <p class="time">${event.dates.start.localTime}</p>
-  // </div>`;
 }
 
 async function renderEvents() {
@@ -109,6 +99,7 @@ async function renderEvents() {
   // eventsEle.innerHTML = eventsHTML;
 
   events.map((event) => eventTemplate(event)).forEach(eventCard => { eventsEle.appendChild(eventCard) });
+  renderStars(document.querySelector("#event-cards"));
 }
 
 renderEvents();
