@@ -1,25 +1,70 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Events Near Me | WDD330</title>
-	<meta name="author" content="Zach Barnett">
-	<meta name="description" content="Find events near your current location.  Powered by Ticketmaster">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Events Near Me | WDD330</title>
+    <meta name="author" content="Zach Barnett" />
+    <meta
+      name="description"
+      content="Find events near your current location.  Powered by Ticketmaster"
+    />
 
-	<link rel="icon" href="/images/favicon.ico">
-	<link rel="stylesheet" href="css/main.css">
-	<script type="module" src="js/main.js"></script>
-</head>
-<body>
-	<header>
+    <link rel="icon" href="/images/favicon.ico" />
+    <link rel="stylesheet" href="css/main.css" />
+    <script type="module" src="js/main.js"></script>
+  </head>
 
-	</header>
-	<main>
-
-	</main>
-	<footer>
-		
-	</footer>
-</body>
+  <body>
+    <header></header>
+    <main>
+      <div class="filter">
+        <h3>Dates</h3>
+        <input type="date" id="startDate" /> -
+        <input type="date" id="endDate" />
+        <h3>Categories</h3>
+        <label
+          ><input
+            type="checkbox"
+            data-category="music"
+            id="music"
+          />Music</label
+        >
+        <label
+          ><input
+            type="checkbox"
+            data-category="music"
+            class="subcategory"
+            id="music-rock"
+          />Rock</label
+        >
+      </div>
+      <div id="events">
+        <h2>Local Events</h2>
+        <div id="event-cards">
+          <div class="event-card" data-category="sports">
+            <img src="https://dummyimage.com/100" />
+            <p class="event-name">UCLA Football</p>
+            <p class="star">★</p>
+            <p class="categories">Category: Sports - Football</p>
+            <p class="venue">Rose Bowl - Pasadena</p>
+            <p class="time">All Day</p>
+            <p class="price">$333+</p>
+          </div>
+          <div class="event-card" data-category="sports">
+            <img src="https://dummyimage.com/100" />
+            <p class="event-name">
+              Formula DRIFT Round 8: Shoreline Showdown - Saturday Main Event
+            </p>
+            <p class="star starred">★</p>
+            <p class="categories">Category: Sports - Racing</p>
+            <p class="venue">Long Beach Arena - Long Beach</p>
+            <p class="time">8:00 AM</p>
+            <p class="price">$97+</p>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer></footer>
+  </body>
 </html>
