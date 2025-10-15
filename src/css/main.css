@@ -16,6 +16,10 @@ footer {
   padding: 1rem 0.5rem;
 }
 
+a {
+  text-decoration: none;
+}
+
 header div {
   display: flex;
 }
@@ -32,7 +36,6 @@ nav ul {
   margin: 0;
 
   & a {
-    text-decoration: none;
     font-size: larger;
   }
 }
@@ -71,9 +74,12 @@ main {
   padding: 0.5rem;
   align-items: center;
 
-  & img {
+  & .event-img {
     grid-row: 1/4;
     justify-self: center;
+  }
+
+  & img {
     width: 100px;
   }
 
@@ -100,6 +106,7 @@ main {
   & .starred {
     color: yellow;
     text-shadow: 0 0 2px black;
+    animation: flashYellow 1s linear;
   }
 
   & .categories {
@@ -115,4 +122,19 @@ main {
 
 	& .price {
 	} */
+}
+
+@keyframes flashYellow {
+  0% {
+    text-shadow: 0 0 2px black;
+  }
+
+  50% {
+    text-shadow: 0 0 2px yellow;
+    transform: scale(1.1);
+  }
+
+  100% {
+    text-shadow: 0 0 2px black;
+  }
 }
