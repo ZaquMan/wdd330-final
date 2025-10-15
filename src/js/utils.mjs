@@ -32,6 +32,18 @@ export async function loadHeaderFooter() {
 	document.querySelector("footer").innerHTML = footerTemplate;
 
 	populateFooter();
+	tagActivePage();
+}
+
+function tagActivePage() {
+	const path = window.location.pathname;
+	const navLinks = document.querySelectorAll("nav a");
+
+	navLinks.forEach(link => {
+		if (link.getAttribute("href") === path) {
+			link.classList.add("active");
+		}
+	});
 }
 
 async function populateFooter() {

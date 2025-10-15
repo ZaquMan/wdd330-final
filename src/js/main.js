@@ -3,7 +3,7 @@ import { getEvents } from "./ExternalData";
 
 loadHeaderFooter();
 
-function eventTemplate(event) {
+export function eventTemplate(event) {
   const imgSrcs = event.images.filter((img) => img.ratio === "4_3");
   let imgSrc = "https://dummyimage.com/100x4:3";
   if (imgSrcs.length > 0) {
@@ -94,9 +94,6 @@ async function renderEvents() {
   const location = await getLocation();
   const geoHashString = encodeGeohash(location.lat, location.long, 6);
   const events = await getEvents(geoHashString);
-
-  // const eventsHTML = events.map((event) => eventTemplate(event)).join("");
-  // eventsEle.innerHTML = eventsHTML;
 
   events.map((event) => eventTemplate(event)).forEach(eventCard => { eventsEle.appendChild(eventCard) });
   renderStars(document.querySelector("#event-cards"));

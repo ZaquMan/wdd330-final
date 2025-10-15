@@ -37,6 +37,11 @@ nav ul {
 
   & a {
     font-size: larger;
+
+    &.active {
+      font-weight: bold;
+      text-decoration: underline;
+    }
   }
 }
 
