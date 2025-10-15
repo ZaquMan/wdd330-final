@@ -74,6 +74,7 @@ main {
   & img {
     grid-row: 1/4;
     justify-self: center;
+    width: 100px;
   }
 
   & p {

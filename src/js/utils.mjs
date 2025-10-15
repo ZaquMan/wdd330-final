@@ -45,7 +45,7 @@ async function populateFooter() {
 	currentYear.textContent = new Date().getFullYear();
 }
 
-async function getLocation() {
+export async function getLocation() {
 	//Reduce API calls by getting information from sessionStorage first
 	let location = getTempStorage("location") || {};
 	if (typeof location != "object") {
