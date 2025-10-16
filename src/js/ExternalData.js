@@ -55,7 +55,7 @@ export async function queryLocationApi() {
 export async function getEvents(geoHash) {
   const tomorrow = new Date();
   tomorrow.setDate(tomorrow.getDate() + 1);
-  const dateString = `${tomorrow.getFullYear()}-${String(tomorrow.getMonth() + 1).padStart(2, "0")}-${String(tomorrow.getDate()).padStart(2, "0")}T${String(tomorrow.getTimezoneOffset() / 60).padStart(2, "0")}:${String(tomorrow.getMinutes()).padStart(2, "0")}:${String(tomorrow.getSeconds()).padStart(2,"0")}Z`;
+  const dateString = `${tomorrow.getFullYear()}-${String(tomorrow.getMonth() + 1).padStart(2, "0")}-${String(tomorrow.getDate()).padStart(2, "0")}T${String(tomorrow.getTimezoneOffset() / 60).padStart(2, "0")}:${String(tomorrow.getMinutes()).padStart(2, "0")}:${String(tomorrow.getSeconds()).padStart(2, "0")}Z`;
 
   const eventsJson = await fetch(
     `${ticketmasterUrl}events.json?apikey=${ticketmasterApiKey}&radius=50&unit=miles&geoPoint=${geoHash}&endDateTime=${dateString}`,

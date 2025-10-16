@@ -1,4 +1,10 @@
-import { loadHeaderFooter, getLocation, encodeGeohash, renderStars, toggleStar } from "./utils.mjs";
+import {
+  loadHeaderFooter,
+  getLocation,
+  encodeGeohash,
+  renderStars,
+  toggleStar,
+} from "./utils.mjs";
 import { getEvents } from "./ExternalData";
 
 loadHeaderFooter();
@@ -39,7 +45,6 @@ export function eventTemplate(event) {
     }
   }
 
-
   const cardEle = document.createElement("div");
   cardEle.classList.add("event-card");
   cardEle.setAttribute("data-category", `${category}-${genre}`);
@@ -73,7 +78,7 @@ export function eventTemplate(event) {
 
   const categoryEle = document.createElement("p");
   categoryEle.classList.add("categories");
-  categoryEle.textContent = `${category} - ${genre}`
+  categoryEle.textContent = `${category} - ${genre}`;
   cardEle.appendChild(categoryEle);
 
   const venueEle = document.createElement("p");
@@ -95,7 +100,11 @@ async function renderEvents() {
   const geoHashString = encodeGeohash(location.lat, location.long, 6);
   const events = await getEvents(geoHashString);
 
-  events.map((event) => eventTemplate(event)).forEach(eventCard => { eventsEle.appendChild(eventCard) });
+  events
+    .map((event) => eventTemplate(event))
+    .forEach((eventCard) => {
+      eventsEle.appendChild(eventCard);
+    });
   renderStars(document.querySelector("#event-cards"));
 }
 
